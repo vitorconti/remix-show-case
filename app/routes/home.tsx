@@ -1,9 +1,16 @@
-import SideBar from "~/features/navigation/components/SideBar";
+import Dashboard from "~/features/navigation/components/Dashboard";
 
+import { json, LoaderFunctionArgs } from "@remix-run/node"
+import { getSession } from "~/session.server";
+export async function loader({ request }: LoaderFunctionArgs) {
+    const session = await getSession(request.headers.get("Cookie"));
+    console.log(session.get("user"))
+    return json({ session })
+}
 export default function () {
     return (
         <div>
-            <SideBar />
+            <Dashboard />
         </div>
     );
 }

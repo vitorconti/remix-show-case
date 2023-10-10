@@ -1,9 +1,16 @@
 import { type ActionFunctionArgs, redirect } from "@remix-run/node"
+import { User } from "~/features/users/types";
+import { getPermissions } from "~/features/users/users.permissions.api";
+import { commitSession, getSession } from "~/session.server";
 export async function action({ request }: ActionFunctionArgs) {
     const formData = await request.formData();
     const values = Object.fromEntries(formData)
-    console.log(values)
-    return redirect(`/home`);
+    const session = await getSession(request.headers.get("Cookie"));
+    const userPermission = getPermissions(values as User)
+    session.set("user", userPermission);
+    return redirect(`/home`, {
+        headers: { "Set-Cookie": await commitSession(session) },
+    });
 }
 export default function () {
     return <>

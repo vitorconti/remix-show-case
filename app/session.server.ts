@@ -21,5 +21,14 @@ async function getLoggedUser(request: Request) {
 
     return session.get("user");
 }
+async function getPermissions(request: Request) {
+    const session = await getSession(request.headers.get("Cookie"));
+
+    if (!session.has("user")) {
+        throw redirect("/login");
+    }
+
+    return session.get("user");
+}
 
 export { getSession, commitSession, destroySession, getLoggedUser };
