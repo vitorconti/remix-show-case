@@ -6,7 +6,7 @@ export async function action({ request }: ActionFunctionArgs) {
     const formData = await request.formData();
     const values = Object.fromEntries(formData)
     const session = await getSession(request.headers.get("Cookie"));
-    const userPermission = getPermissions(values as User)
+    const userPermission = await getPermissions(values as User)
     session.set("user", userPermission);
     return redirect(`/home`, {
         headers: { "Set-Cookie": await commitSession(session) },

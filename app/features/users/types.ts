@@ -3,10 +3,10 @@ export type User = {
     password: string
 }
 type Permission = {
-    permission: {
-        routes: Record<string, string>[]
-        components: Record<string, string>[]
-    }
+
+    routes: Record<string, boolean>[]
+    components: Record<string, boolean>[]
+
 }
 export type UserPermissions = {
     user: User;
