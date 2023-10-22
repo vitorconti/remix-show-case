@@ -7,10 +7,7 @@ const admin: UserPermissions = {
     },
 
 }
-export type Permission = {
-    routes: [{}],
-    components: [{}]
-}
+
 const normalUser: UserPermissions = {
     user: {
         email: "anyemail@generic.com",
@@ -21,7 +18,7 @@ const normalUser: UserPermissions = {
         components: [{
             component: "academicCard",
             hasAccess: true
-        }, { component: "processorCard", hasAcces: true }, { component "statisticCard", hasAccess: true }]
+        }, { component: "processorCard", hasAccess: true }, { component: "statisticCard", hasAccess: true }]
     }
 }
 const componentPermissions = [
