@@ -2,7 +2,7 @@ import { UserPermissions } from "~/features/users/types";
 
 const admin: UserPermissions = {
     user: {
-        email: "admin@master.com",
+        email: "admin@admin.com",
         password: '123456'
     },
 

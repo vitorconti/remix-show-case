@@ -2,8 +2,8 @@ export type User = {
     email: string,
     password: string
 }
-type ComponentPermission = { component: string, hasAccess: boolean }
-type Permission = {
+export type ComponentPermission = { component: string, hasAccess?: boolean }
+export type Permission = {
     routes: [{}],
     components: Array<ComponentPermission>
 }

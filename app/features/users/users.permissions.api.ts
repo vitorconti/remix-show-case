@@ -1,5 +1,5 @@
 import { admin, normalUser } from "~/mock/permissions-mock";
-import { User } from "./types";
+import { type User } from "./types";
 
 async function getPermissions(user: User) {
     await new Promise(r => setTimeout(r, 1000));
